@@ -77,9 +77,14 @@ tr:nth-child(even) {
       translateZ( calc( 1.865 * var(--item-width) ) )
   }
   
+<<<<<<< Updated upstream
   li:nth-child(even){
   background:yellow}
   /* li:focus + li{} */
+=======
+  li:focus + li { 
+  background-color: #c4ad7d;}
+>>>>>>> Stashed changes
   
   @keyframes rotate {
     from {

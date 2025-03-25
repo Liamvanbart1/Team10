@@ -28,28 +28,28 @@ tr:nth-child(even) {
 
 
 * {
-    box-sizing:border-box;  
+    box-sizing:border-box;
     margin:0;
     padding:0;
-  }
-  
-  html {
-  --item-width:30vw;
-  --item-height: calc( var(--item-width) * 0.8 );
-  }
-  
-  body {
+}
+
+html {
+    --item-width:12vw;
+    --item-height: calc( var(--item-width) * 0.8 );
+}
+
+body {
     height:100vh;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    
+
     transform-style: preserve-3d;
     perspective:800px;
-  }
-  ul {
+}
+ul {
     display:grid;
     list-style:none;
     background:sandybrown;
@@ -57,40 +57,39 @@ tr:nth-child(even) {
     /* animation: rotate 20s linear infinite; */
     scroll-snap-type: mandatory;
     overflow-x:visible;
-  }
-  
-  
-  li{
+    width: 10vw;
+    justify-items: center;
+}
+
+
+li{
+    width: 10vw;
     grid-area:1/1;
     align-content: center;
-    width:var(--item-width);
+    /*width:var(--item-width);*/
     height:var(--item-height);
     background-color:#E5CD98;
     transform-style: preserve-3d;
     --item-angle: calc( 360deg / sibling-count() * sibling-index() );
     /* --item-angle-half: calc( tan( var(--item-angle) * 0.5 ) );  */
-    
+
     container-type: scroll-state;
-    
+
     transform:
-      rotateY( var(--item-angle) )
-      translateZ( calc( 1.865 * var(--item-width) ) )
-  }
-  
-<<<<<<< Updated upstream
-  li:nth-child(even){
-  background:yellow}
-  /* li:focus + li{} */
-=======
-  li:focus + li { 
-  background-color: #c4ad7d;}
->>>>>>> Stashed changes
-  
-  @keyframes rotate {
+            rotateY( var(--item-angle) )
+            translateZ( calc( 1.865 * var(--item-width) ) )
+}
+
+li:nth-child(even){
+    background:yellow}
+/* li:focus + li{} */
+
+@keyframes rotate {
     from {
-      transform: rotate3d(0, 0, 0, 0deg); /* Proper syntax */
+        transform: rotate3d(0, 0, 0, 0deg); /* Proper syntax */
     }
     to {
-      transform: rotate3d(0, 1, 0, 360deg);
+        transform: rotate3d(0, 1, 0, 360deg);
     }
-  }
+}
+

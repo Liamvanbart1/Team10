@@ -22,3 +22,46 @@ th {
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
+
+/* The demo */
+button {
+anchor-name: --my-anchor;
+}
+
+#InformationPopOver {
+    position: absolute;
+    position-anchor: --my-anchor;
+
+    position-area: center span-bottom;
+    margin: 0;
+
+    border: none;
+}
+
+#InformationPopOver::backdrop {
+    background: rgba(113, 113, 113, 0.5);
+  }
+
+
+#InformationPopOver {
+    
+    &:popover-open {
+          @starting-style {
+            &:popover-open{
+            transform: translateY(200px);
+            opacity: 0;
+            }
+          }
+  
+      transform: translateY(20px);
+      opacity: 1;
+    }
+  
+        transform: translateY(0);
+    opacity: 0;
+  
+    transition: transform 0.5s, opacity 0.5s, display 0.5s;
+    transition-behavior: allow-discrete;
+  }
+  

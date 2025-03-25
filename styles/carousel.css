@@ -15,11 +15,11 @@ ul {
     display: flex;
     width: 500px;
     list-style-type: none;
-    overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: .2em;
     touch-action: none;
-    anchor-name: --carousel;
+    /*anchor-name: --carousel;*/
+    /*overflow-x: auto;*/
 
 
     scroll-behavior: smooth;
@@ -67,7 +67,7 @@ ul {
             border-radius: 50%;
             border: 2px solid white;
 
-            &:target-current  {
+            &:target {
                 background-color: green;
             }
 

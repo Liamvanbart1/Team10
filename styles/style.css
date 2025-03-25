@@ -32,11 +32,26 @@ anchor-name: --my-anchor;
 #InformationPopOver {
     position: absolute;
     position-anchor: --my-anchor;
-
     position-area: center span-bottom;
     margin: 0;
-
     border: none;
+
+    &:popover-open {
+        @starting-style {
+          &:popover-open{
+          transform: translateY(0);
+          opacity: 0;
+          }
+        }
+
+    transform:  scale(1.1);
+    opacity: 1;
+  }
+
+    transform: translateY(0);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s, display 0.5s;
+    transition-behavior: allow-discrete;
 }
 
 #InformationPopOver::backdrop {
@@ -46,22 +61,6 @@ anchor-name: --my-anchor;
 
 #InformationPopOver {
     
-    &:popover-open {
-          @starting-style {
-            &:popover-open{
-            transform: translateY(200px);
-            opacity: 0;
-            }
-          }
-  
-      transform: translateY(20px);
-      opacity: 1;
-    }
-  
-        transform: translateY(0);
-    opacity: 0;
-  
-    transition: transform 0.5s, opacity 0.5s, display 0.5s;
-    transition-behavior: allow-discrete;
+   
   }
   

@@ -7,37 +7,31 @@ const fetchDate = async () => {
         const data = await response.json();
         const women = data.data;
 
-        const filteredWomen = women.map(woman => ({
-            id: woman.id,
-            naam: woman.name,
-            afkorting: woman.short_name,
-            period: woman.period
-        })).sort((a, b) => a.period.localeCompare(b.period));
+        women.forEach(women => {
+            console.log(women);
+            let womenHTML =
+                `<li>
+                <a href="${women.href}" target="_blank">
+                <h3>${women.name}</h3>
+                </a>
+                </li>`;
+        })
 
+        // const filteredWomen = women.map(woman => ({
+        //     id: woman.id,
+        //     naam: woman.name,
+        //     afkorting: woman.short_name,
+        //     period: woman.period,
+        //     image: woman.image
+        // })).sort((a, b) => a.period.localeCompare(b.period));
             // .sort((a, b) => a.period.localeCompare(b.period));
         // https://www.youtube.com/watch?v=CTHhlx25X-U  JS SORTING
-        populateTable(filteredWomen);
+
+
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
 
-const populateTable = (womenData) => {
-    const tableBody = document.querySelector('#womenTable tbody');
-    tableBody.innerHTML = '';  // Clear any existing data
-
-    womenData.forEach(woman => {
-        const row = document.createElement('tr');
-
-        row.innerHTML = `
-            <td>${woman.id}</td>
-            <td>${woman.naam}</td>
-            <td>${woman.afkorting}</td>
-            <td>${woman.period}</td>
-        `;
-
-        tableBody.appendChild(row);
-    });
-}
 
 fetchDate();

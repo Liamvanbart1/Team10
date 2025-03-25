@@ -1,0 +1,84 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Material Symbols Outlined", sans-serif;
+}
+
+
+ul {
+
+    display: flex;
+    width: 500px;
+    list-style-type: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: .2em;
+    touch-action: none;
+    anchor-name: --carousel;
+
+
+    scroll-behavior: smooth;
+
+    scroll-marker-group: after;
+
+    &::scroll-marker-group {
+        position: fixed;
+        position-anchor: --carousel;
+        position-area: block-end;
+        margin: 10px;
+
+        display: grid;
+        grid-auto-columns: 20px;
+        grid-auto-flow: column;
+        gap: 20px;
+
+        background-color: green;
+    }
+
+    li {
+
+        container-type: scroll-state;
+        margin: 1em;
+        flex-shrink: 0;
+        height: 450px;
+        width: 300px;
+        scroll-snap-align: center;
+        background: red;
+        counter-increment: items;
+
+        /*> .card {*/
+        /*    @container not scroll-state(snapped: x) {*/
+        /*        interactivity: inert;*/
+        /*        opacity: .25;*/
+        /*    }*/
+        /*}*/
+
+        &::scroll-marker {
+            content: '';
+            cursor: pointer;
+            background-color: red;
+            width: 20px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            border: 2px solid white;
+
+            &:target-current  {
+                background-color: green;
+            }
+
+
+        }
+    }
+}
+
+
+
+
+
+
+

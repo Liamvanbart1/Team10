@@ -32,31 +32,47 @@ tr:nth-child(even) {
     margin:0;
     padding:0;
   }
-  
+    
   html {
-  --item-width:12rem;
-  --item-height: calc( var(--item-width) * 0.8 );
+    --item-width:12rem;
+    --item-height: calc( var(--item-width) * 0.8 );
+  }
+    
+  body {
+    height:200dvh;
+    overflow-x:clip;
   }
   
-  body {
-    height:100vh;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    
+  main {
+    position:fixed;
+    top:0;
+    left:0;
     transform-style: preserve-3d;
     perspective:800px;
+    
+    width:100dvw;
+    height:100dvh;
+    display:grid;
+    place-items:center;
+    place-content:center;
   }
+  
   ul {
     display:grid;
     list-style:none;
     background:sandybrown;
     transform-style: preserve-3d;
-    
-    animation: rotate 8s linear infinite;
   }
+  
+  .ScrollAnimation {
+    animation:--grow-progress linear forwards, --moveup linear forwards,--shrink-progress ease-in-out forwards;
+    animation-timeline: scroll();
+    animation-range-start: 0dvh, 20dvh, 80dvh;
+     animation-range-end: 20dvh, 60dvh, 100dvh;
+    background-color:gold;
+   
+  }
+  
   
   
   li{
@@ -66,21 +82,49 @@ tr:nth-child(even) {
     background-color:rgb(0, 128, 66);
     border:5px solid red;
     transform-style: preserve-3d;
-    
+  
     --item-angle: calc( 360deg / sibling-count() * sibling-index() );
-    /* --item-angle-half: calc( tan( var(--item-angle) * 0.5 ) );  */
-    
+  /*   --item-angle-half: calc( tan( var(--item-angle) * 0.5 ) );  */
+  
     transform:
+      /*       translateZ( calc( -2 * var(--item-width) ) ) */
       rotateY( var(--item-angle) )
       translateZ( calc( 2 * var(--item-width) ) )
   }
   
   
-  @keyframes rotate {
+  @keyframes --grow-progress {
     from {
-      transform: rotate3d(0, 0, 0, 0deg); /* Proper syntax */
+      transform: translateZ(-50em) translateY(0);
     }
     to {
-      transform: rotate3d(1, 1, 1, 360deg);
+     transform: translateZ(0em) translateY(25vh);
+    }
+  }
+  
+  @keyframes --shrink-progress {
+    from {
+      transform: translateZ(0em) translateY(-30vh);
+    }
+    to {
+     transform: translateZ(-50em) translateY(0);
+    }
+  }
+  
+  @keyframes --moveup{
+    from{
+      transform: translateY(25vh);
+    }
+    to{
+      transform: translateY(-30vh);
+    }
+  }
+    
+  @keyframes --background {
+    from {
+      transform: translateZ(-50em);
+    }
+    to {
+     transform: translateZ(-50em);
     }
   }

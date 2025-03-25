@@ -34,7 +34,7 @@ tr:nth-child(even) {
   }
   
   html {
-  --item-width:12rem;
+  --item-width:30vw;
   --item-height: calc( var(--item-width) * 0.8 );
   }
   
@@ -54,13 +54,15 @@ tr:nth-child(even) {
     list-style:none;
     background:sandybrown;
     transform-style: preserve-3d;
-    
-    animation: rotate 8s linear infinite;
+    /* animation: rotate 20s linear infinite; */
+    scroll-snap-type: mandatory;
+    overflow-x:visible;
   }
   
   
   li{
     grid-area:1/1;
+    align-content: center;
     width:var(--item-width);
     height:var(--item-height);
     background-color:#E5CD98;
@@ -68,18 +70,22 @@ tr:nth-child(even) {
     --item-angle: calc( 360deg / sibling-count() * sibling-index() );
     /* --item-angle-half: calc( tan( var(--item-angle) * 0.5 ) );  */
     
+    container-type: scroll-state;
+    
     transform:
       rotateY( var(--item-angle) )
-      translateZ( calc( 2 * var(--item-width) ) )
+      translateZ( calc( 1.865 * var(--item-width) ) )
   }
   
-  li:focus + li{}
+  li:nth-child(even){
+  background:yellow}
+  /* li:focus + li{} */
   
   @keyframes rotate {
     from {
       transform: rotate3d(0, 0, 0, 0deg); /* Proper syntax */
     }
     to {
-      transform: rotate3d(1, 1, 1, 360deg);
+      transform: rotate3d(0, 1, 0, 360deg);
     }
   }

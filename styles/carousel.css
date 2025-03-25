@@ -24,7 +24,7 @@ ul {
 
     scroll-behavior: smooth;
 
-    scroll-marker-group: after;
+    /* scroll-marker-group: after; */
 
     &::scroll-marker-group {
         position: fixed;

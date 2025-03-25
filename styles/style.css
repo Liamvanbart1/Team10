@@ -22,3 +22,65 @@ th {
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
+
+
+
+
+* {
+    box-sizing:border-box;  
+    margin:0;
+    padding:0;
+  }
+  
+  html {
+  --item-width:12rem;
+  --item-height: calc( var(--item-width) * 0.8 );
+  }
+  
+  body {
+    height:100vh;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    transform-style: preserve-3d;
+    perspective:800px;
+  }
+  ul {
+    display:grid;
+    list-style:none;
+    background:sandybrown;
+    transform-style: preserve-3d;
+    
+    animation: rotate 8s linear infinite;
+  }
+  
+  
+  li{
+    grid-area:1/1;
+    width:var(--item-width);
+    height:var(--item-height);
+    background-color:rgb(0, 128, 66);
+    border:5px solid red;
+    transform-style: preserve-3d;
+    
+    --item-angle: calc( 360deg / sibling-count() * sibling-index() );
+    /* --item-angle-half: calc( tan( var(--item-angle) * 0.5 ) );  */
+    
+    transform:
+      rotateY( var(--item-angle) )
+      translateZ( calc( 2 * var(--item-width) ) )
+  }
+  
+  
+  @keyframes rotate {
+    from {
+      transform: rotate3d(0, 0, 0, 0deg); /* Proper syntax */
+    }
+    to {
+      transform: rotate3d(1, 1, 1, 360deg);
+    }
+  }

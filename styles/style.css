@@ -67,10 +67,6 @@ ul {
 
 }
 
-.box {
-  background: green;
-}
-
 .fake-scroller {
   grid-row: 1;
   grid-column: 1;
@@ -98,11 +94,10 @@ ul {
 
 }
 
-li {
+main li {
   grid-area: 1/1;
   width: var(--item-width);
   height: var(--item-height);
-  /* background-color: hsl(var(--bgColor), 100%, 50%); */
   background-color: red;
   border: 5px solid black;
   transform-style: preserve-3d;
@@ -253,4 +248,83 @@ li {
 
 .vertical-scroll:nth-of-type(4) {
   z-index: var(--z-index4);
+}
+
+
+.scene {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  transform-style: preserve-3d;
+  perspective: 800px;
+
+  ul {
+    position: absolute;
+    display: grid;
+    inset: 0;
+    background-color: #ff03;
+    transform-style: preserve-3d;
+
+    li {
+      grid-area: 1/1;
+      border: 5px solid black;
+    }
+
+    .vloer {
+      background-color: aqua;
+      width: 100dvw;
+      height: 50vmin;
+      align-self: end;
+      transform-origin: bottom;
+      rotate: x 90deg;
+    }
+
+    .linkermuur {
+      background-color: aqua;
+      width: 50vmin;
+      height: 100dvh;
+      justify-self: start;
+      transform-origin: left;
+      rotate: y 90deg;
+    }
+
+    .rechtermuur {
+      background-color: aqua;
+      width: 50vmin;
+      height: 100dvh;
+      justify-self: end;
+      transform-origin: right;
+      rotate: y -90deg;
+    }
+
+    .achtermuur {
+      background-color: aqua;
+      width: 100dvw;
+      height: 100dvh;
+      translate: 0 0 -50vmin;
+      animation: --achtermuur 5s infinite alternate;
+      /* animation-timeline: scroll();
+      animation-range-start: 0dvh, 20dvh;
+      animation-range-end: 20dvh, 60dvh; */
+    }
+
+    .plafond {
+      background-color: aqua;
+      width: 100dvw;
+      height: 50vmin;
+      align-self: start;
+      transform-origin: top;
+      rotate: x -90deg;
+    }
+  }
+}
+
+@keyframes --achtermuur {
+  from {
+    translate: 0 0 -50vmin;
+  }
+
+  to {
+    translate: 0 0 -10vmin;
+  }
 }

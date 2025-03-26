@@ -18,6 +18,10 @@ body {
   height: 200dvh;
   overflow-x: clip;
   timeline-scope: --horizontal-scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 main {

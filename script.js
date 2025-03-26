@@ -6,23 +6,32 @@ const fetchDate = async () => {
 
         const data = await response.json();
         const women = data.data;
+        const imageBaseURL = "https://fdnd.directus.app/assets/";
+        const lists = document.querySelectorAll(".horizontal-scroll");
 
-        const container = document.getElementById("popoverContainer"); // A wrapper div for all popovers
+        const sections = {
+            "way back": lists[0],
+            "web pioneer": lists[1],
+            "web maturity": lists[2],
+            "web weirdness": lists[3],
+            "web talent": lists[3]
+        };
+        const sectionCounters = {
+            "way back": 0,
+            "web pioneer": 0,
+            "web maturity": 0,
+            "web weirdness": 0,
+            "web talent": 12
+        };
 
-        const imageBaseURL = " https://fdnd.directus.app/assets/";
         women.forEach(women => {
-            console.log(women);
-            // Create a unique popover ID
             let popoverId = `popover-${women.id}`;
             let imageURL = imageBaseURL + women.image;
 
             // Create the button to trigger the popover
             let button = document.createElement("button");
-            button.textContent = `Show ${women.name}`;
             button.setAttribute("popovertarget", popoverId);
-            button.innerHTML = `
-                <img src="${imageURL}" alt="${women.name}">
-            `;
+            button.innerHTML = `<img src="${imageURL}" alt="${women.name}">`;
 
             // Create the popover
             let popover = document.createElement("div");
@@ -37,28 +46,23 @@ const fetchDate = async () => {
                 <p>${women.tagline}</p>
             `;
 
-            // popover.style.positionAnchor = `#${women.id}`;
+            if (sections[women.period]) {
+                let listItems = sections[women.period].querySelectorAll("li");
+                let count = sectionCounters[women.period];
 
-            // Append the button and popover to the container
-            container.appendChild(button);
-            container.appendChild(popover);
-        })
+                if (listItems[count]) {
+                    listItems[count].appendChild(button);
+                }
+                sectionCounters[women.period]++;
+            }
 
-        // const filteredWomen = women.map(woman => ({
-        //     id: woman.id,
-        //     naam: woman.name,
-        //     afkorting: woman.short_name,
-        //     period: woman.period,
-        //     image: woman.image
-        // })).sort((a, b) => a.period.localeCompare(b.period));
-        //     .sort((a, b) => a.period.localeCompare(b.period));
-        // https://www.youtube.com/watch?v=CTHhlx25X-U  JS SORTING
+            document.body.appendChild(popover);
+        });
 
 
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
-
 
 fetchDate();

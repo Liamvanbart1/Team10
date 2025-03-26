@@ -40,11 +40,14 @@ main {
 }
 
 ul {
+  justify-content: center;
+  align-items: center;
   display: grid;
   list-style: none;
-  background: sandybrown;
+
   transform-style: preserve-3d;
-  box-shadow: 1px 1px 5px #C4AB73;
+  /* box-shadow: 1px 1px 5px #C4AB73; */
+
 
 }
 
@@ -68,7 +71,7 @@ ul {
 }
 
 .horizontal-scroll {
-  background-color: gold;
+  /* background-color: gold; */
   animation-range: cover 0 cover 100%;
   animation-name: rotate;
 

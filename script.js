@@ -7,7 +7,16 @@ const fetchDate = async () => {
         const data = await response.json();
         const women = data.data;
 
-        const container = document.getElementById("popoverContainer"); // A wrapper div for all popovers
+        const WayBack = document.getElementById("WayBack");
+        const Pioneer = document.getElementById("WebPioneer");
+        const Maturity = document.getElementById("WebMaturity");
+        const Modern = document.getElementById("WebModern");
+        
+        const periodOrder = ["way back", "web pioneer", "web maturity","web weirdness", "web talent"];
+
+        // Sort the women array based on the periodOrder array
+       women.sort((a, b) => periodOrder.indexOf(a.period) - periodOrder.indexOf(b.period));
+
 
         const imageBaseURL = " https://fdnd.directus.app/assets/";
         women.forEach(women => {
@@ -37,11 +46,27 @@ const fetchDate = async () => {
                 <p>${women.tagline}</p>
             `;
 
-            // popover.style.positionAnchor = `#${women.id}`;
+            button.style.anchorName = `#${women.id}`;
+            popover.style.positionAnchor = `#${women.id}`;
 
             // Append the button and popover to the container
-            container.appendChild(button);
-            container.appendChild(popover);
+            if (women.period === "way back"){
+                WayBack.appendChild(button);
+                WayBack.appendChild(popover);
+            }
+            else if(women.period === "web pioneer") {
+                Pioneer.appendChild(button);
+                Pioneer.appendChild(popover);
+            }
+            else if(women.period === "web maturity") {
+                Maturity.appendChild(button);
+                Maturity.appendChild(popover);
+            }
+            else if(women.period === "web weirdness" ||women.period  === "web talent") {
+                Modern.appendChild(button);
+                Modern.appendChild(popover);
+            }
+            
         })
 
         // const filteredWomen = women.map(woman => ({

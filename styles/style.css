@@ -5,29 +5,53 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-th {
-    background-color: #f4f4f4;
-}
-tr:nth-child(even) {
-    background-color: #f9f9f9;
+    position: absolute;
+    align-self: center;
+    align-items: center;
+    background-color: rgb(234, 234, 234);
 }
 
+.stuck-top {
+    container-type: scroll-state;
+    position: sticky;
+    top: 20px;
+  
+    /* like container queries, can't query self */
+    > nav {
+      background: rgb(255, 255, 255);
+      border-radius: .8em;
+      filter: drop-shadow(2px 2px 4px rgba(120, 120, 120, 0.469));
+    }
+  }
 
-/* The demo */
-button {
+  nav {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    place-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    
+    font-size: 1.25rem;
+    
+    @media (width >= 520px) {
+      padding: 1.5rem;
+    }
+    > a {
+        white-space: nowrap;
+        color: #212529;
+        text-decoration: none;
+        padding-inline: .5rem;
+      }
+    }
+
+
+
+
+/* button {
 anchor-name: --my-anchor;
-}
+} */
 
 .InformationPopOver {
     /* position-anchor: --my-anchor;  */
@@ -57,3 +81,17 @@ anchor-name: --my-anchor;
 .InformationPopOver::backdrop {
     background: rgba(113, 113, 113, 0.5);
   }
+
+
+img{
+    width: 200px;
+}
+
+button{
+    margin: 10px;
+}
+
+#popoverContainer{
+    /* position: relative; */
+    /* left: 50%; */
+}

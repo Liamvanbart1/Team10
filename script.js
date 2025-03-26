@@ -14,18 +14,21 @@ const fetchDate = async () => {
         
         const periodOrder = ["way back", "web pioneer", "web maturity","web weirdness", "web talent"];
 
-        // Sort the women array based on the periodOrder array
+        // sorteren
        women.sort((a, b) => periodOrder.indexOf(a.period) - periodOrder.indexOf(b.period));
 
 
+
         const imageBaseURL = " https://fdnd.directus.app/assets/";
+
         women.forEach(women => {
             console.log(women);
-            // Create a unique popover ID
-            let popoverId = `popover-${women.id}`;
             let imageURL = imageBaseURL + women.image;
 
-            // Create the button to trigger the popover
+            // ID maken
+            let popoverId = `popover-${women.id}`;
+
+            // button maken
             let button = document.createElement("button");
             button.textContent = `Show ${women.name}`;
             button.setAttribute("popovertarget", popoverId);
@@ -33,7 +36,7 @@ const fetchDate = async () => {
                 <img src="${imageURL}" alt="${women.name}">
             `;
 
-            // Create the popover
+            // popover maken
             let popover = document.createElement("div");
             popover.id = popoverId;
             popover.setAttribute("popover", "");
@@ -46,10 +49,7 @@ const fetchDate = async () => {
                 <p>${women.tagline}</p>
             `;
 
-            button.style.anchorName = `#${women.id}`;
-            popover.style.positionAnchor = `#${women.id}`;
-
-            // Append the button and popover to the container
+            // sorteert de knoppen op tijd
             if (women.period === "way back"){
                 WayBack.appendChild(button);
                 WayBack.appendChild(popover);
@@ -65,8 +65,7 @@ const fetchDate = async () => {
             else if(women.period === "web weirdness" ||women.period  === "web talent") {
                 Modern.appendChild(button);
                 Modern.appendChild(popover);
-            }
-            
+            } 
         })
 
         // const filteredWomen = women.map(woman => ({

@@ -8,6 +8,10 @@ html {
   --item-width: 12rem;
   --item-height: calc(var(--item-width) * 0.8);
   --bgColor: calc(360 / sibling-count() * sibling-index());
+  --z-index1: 3;
+  --z-index2: 4;
+  --z-index3: 2;
+  --z-index4: 1;
 }
 
 body {
@@ -32,13 +36,17 @@ main {
   justify-content: center;
 }
 
+main * {
+  transform-style: preserve-3d;
+}
+
 .vertical-scroll {
   display: grid;
   transform-style: preserve-3d;
-  animation: --grow-progress linear forwards, --moveup linear forwards, --shrink-progress ease-in-out forwards;
+  animation: --grow-progress linear forwards, --moveup linear forwards;
   animation-timeline: scroll();
-  animation-range-start: 0dvh, 20dvh, 80dvh;
-  animation-range-end: 20dvh, 60dvh, 100dvh;
+  animation-range-start: 0dvh, 20dvh;
+  animation-range-end: 20dvh, 60dvh;
 }
 
 ul {
@@ -74,10 +82,13 @@ ul {
     height: 100%;
   }
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
 }
 
 .horizontal-scroll {
-  /* background-color: gold; */
   animation-range: cover 0 cover 100%;
   animation-name: rotate;
 
@@ -87,35 +98,40 @@ li {
   grid-area: 1/1;
   width: var(--item-width);
   height: var(--item-height);
-  background-color: hsl(var(--bgColor), 100%, 50%);
+  /* background-color: hsl(var(--bgColor), 100%, 50%); */
+  background-color: red;
+  border: 5px solid black;
   transform-style: preserve-3d;
 
   --item-angle: calc(360deg / sibling-count() * sibling-index());
-  /*   --item-angle-half: calc( tan( var(--item-angle) * 0.5 ) );  */
 
   transform:
-    /*       translateZ( calc( -2 * var(--item-width) ) ) */
     rotateY(var(--item-angle)) translateZ(calc(2 * var(--item-width)))
 }
 
 
 @keyframes --grow-progress {
-  from {
+  0% {
+
     transform: translateZ(-50em) translateY(0);
+    --z-index1: 3;
+    --z-index2: 4;
+    --z-index3: 2;
+    --z-index4: 1;
   }
 
-  to {
-    transform: translateZ(0em) translateY(25vh);
+  100% {
+    --z-index1: 4;
+    --z-index2: 3;
+    --z-index3: 2;
+    --z-index4: 1;
+    transform: translateZ(0em) translateY(35vh);
   }
-}
-
-li+li+li {
-  background-color: D6BC82;
 }
 
 @keyframes --shrink-progress {
   from {
-    transform: translateZ(0em) translateY(-30vh);
+    transform: translateZ(0em) translateY(-70vh);
   }
 
   to {
@@ -124,13 +140,63 @@ li+li+li {
 }
 
 @keyframes --moveup {
-  from {
-    transform: translateY(25vh);
+
+  0% {
+    --z-index1: 4;
+    --z-index2: 3;
+    --z-index3: 2;
+    --z-index4: 1;
+    transform: translateY(35vh)
   }
 
-  to {
-    transform: translateY(-30vh);
+  5%,
+  25% {
+    --z-index1: 3;
+    --z-index2: 4;
+    --z-index3: 2;
+    --z-index4: 1;
+    transform: translateY(15vh)
   }
+
+  30%,
+  50% {
+    --z-index1: 1;
+    --z-index2: 2;
+    --z-index3: 4;
+    --z-index4: 3;
+    transform: translateY(-5vh);
+
+  }
+
+  55%,
+  75% {
+    --z-index1: 1;
+    --z-index2: 2;
+    --z-index3: 3;
+    --z-index4: 4;
+    transform: translateY(-25vh);
+
+  }
+
+  80%,
+  95% {
+    --z-index1: 1;
+    --z-index2: 2;
+    --z-index3: 3;
+    --z-index4: 4;
+    transform: translateY(-25vh);
+
+  }
+
+  100% {
+    --z-index1: 1;
+    --z-index2: 2;
+    --z-index3: 3;
+    --z-index4: 4;
+    transform: translateY(-25vh);
+
+  }
+
 }
 
 @keyframes --background {
@@ -167,4 +233,20 @@ li+li+li {
 
 .vertical-scroll:nth-child(5) .fake-scroller {
   scroll-timeline: --horizontal-scroll-3 inline;
+}
+
+.vertical-scroll:nth-of-type(1) {
+  z-index: var(--z-index1);
+}
+
+.vertical-scroll:nth-of-type(2) {
+  z-index: var(--z-index2);
+}
+
+.vertical-scroll:nth-of-type(3) {
+  z-index: var(--z-index3);
+}
+
+.vertical-scroll:nth-of-type(4) {
+  z-index: var(--z-index4);
 }

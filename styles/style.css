@@ -7,6 +7,7 @@
 html {
   --item-width: 12rem;
   --item-height: calc(var(--item-width) * 0.8);
+  --bgColor: calc(360 / sibling-count() * sibling-index());
 }
 
 body {
@@ -32,6 +33,7 @@ main {
 }
 
 .vertical-scroll {
+  display: grid;
   transform-style: preserve-3d;
   animation: --grow-progress linear forwards, --moveup linear forwards, --shrink-progress ease-in-out forwards;
   animation-timeline: scroll();
@@ -44,6 +46,8 @@ ul {
   align-items: center;
   display: grid;
   list-style: none;
+  grid-row: 1;
+  grid-column: 1;
 
   transform-style: preserve-3d;
   /* box-shadow: 1px 1px 5px #C4AB73; */
@@ -56,6 +60,8 @@ ul {
 }
 
 .fake-scroller {
+  grid-row: 1;
+  grid-column: 1;
   z-index: 10;
   position: relative;
   overflow: scroll;
@@ -81,7 +87,7 @@ li {
   grid-area: 1/1;
   width: var(--item-width);
   height: var(--item-height);
-  background-color: #E5CD98;
+  background-color: hsl(var(--bgColor), 100%, 50%);
   transform-style: preserve-3d;
 
   --item-angle: calc(360deg / sibling-count() * sibling-index());
@@ -92,9 +98,6 @@ li {
     rotateY(var(--item-angle)) translateZ(calc(2 * var(--item-width)))
 }
 
-li+li {
-  background-color: #DFC488;
-}
 
 @keyframes --grow-progress {
   from {
@@ -148,4 +151,20 @@ li+li+li {
   to {
     transform: rotateY(360deg);
   }
+}
+
+.vertical-scroll:nth-child(2) .fake-scroller {
+  scroll-timeline: --horizontal-scroll-1 inline;
+}
+
+.vertical-scroll:nth-child(3) .fake-scroller {
+  scroll-timeline: --horizontal-scroll-2 inline;
+}
+
+.vertical-scroll:nth-child(4) .fake-scroller {
+  scroll-timeline: --horizontal-scroll-3 inline;
+}
+
+.vertical-scroll:nth-child(5) .fake-scroller {
+  scroll-timeline: --horizontal-scroll-3 inline;
 }

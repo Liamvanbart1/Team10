@@ -302,10 +302,7 @@ main li {
       width: 100dvw;
       height: 100dvh;
       translate: 0 0 -50vmin;
-      animation: --achtermuur infinite forwards;
-      animation-timeline: scroll();
-      animation-range-start: 0dvh, 20dvh;
-      animation-range-end: 20dvh, 60dvh;
+
     }
 
     .plafond {

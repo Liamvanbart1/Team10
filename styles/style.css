@@ -468,3 +468,10 @@ aspect-ratio:1;
     <p class="popover-tag-styling">${women.period}</p>
     <p class="popover-tag-styling">${women.country_code}</p>
 </div> */
+
+
+main div:first-of-type ul li:nth-of-type(13) img, main div:first-of-type ul li:nth-of-type(12) img {
+    width: 100%;
+    height:100%;
+     mix-blend-mode: luminosity;
+}

@@ -19,8 +19,8 @@ html {
   --z-index2: 4;
   --z-index3: 2;
   --z-index4: 1;
-  
-  --pillar-color: #52421E; 
+
+  --pillar-color: #52421E;
   --text-color: #C4AB73;
   --background-color: #E5CD98;
   --greek-font: 'DalekPinpoint', serif;
@@ -36,42 +36,47 @@ body {
     display: none;
   }
 }
+
 section {
-position: fixed;
+  position: fixed;
   display: flex;
   width: 100%;
   justify-content: center;
   padding-top: 10rem;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: var(--greek-font);
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  
+
 }
 
 h1 {
-padding-top: 2rem;
-    font-size: clamp(3rem, 0.297rem + 11.0891vw, 10rem);
-    text-shadow: 3px 5px 1px rgba(255, 238, 142, 0.25);
-    -webkit-text-stroke-width:2px;
-    background-color: #ffffff;
-    -webkit-text-stroke-color:#5c4617;
-    text-align: center;
-  }
-  h2 {
-    font-size: 2rem;
-    background-color: var(--text-color);
-    text-shadow: 1px 2px 1px rgba(255, 238, 142, 0.25);
-    -webkit-text-stroke-width:1px;
-    -webkit-text-stroke-color:#C4AB73;
-  }
-
-h1::after{
-  color:red;
+  padding-top: 2rem;
+  font-size: clamp(3rem, 0.297rem + 11.0891vw, 10rem);
+  text-shadow: 8px 8px 1px rgba(60, 0, 30, 0.25);
+  -webkit-text-stroke-width: 2px;
+  background-color: #ffffff;
+  -webkit-text-stroke-color: #5c4617;
+  text-align: center;
+  filter: drop-shadow(5px 5px 40px #423e03);
 }
+
+h2 {
+  font-size: 2rem;
+  background-color: var(--text-color);
+  text-shadow: 1px 2px 1px rgba(255, 238, 142, 0.25);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #C4AB73;
+}
+
+h1::after {
+  color: red;
+}
+
 main {
   position: fixed;
   top: 0;
@@ -160,7 +165,7 @@ main li {
 }
 
 main li button {
-    mix-blend-mode: luminosity;
+  mix-blend-mode: luminosity;
 }
 
 
@@ -305,20 +310,21 @@ main li button {
   z-index: var(--z-index4);
 }
 
-button{
+button {
   width: 100%;
   height: 100%;
 }
 
-button:hover{
-  color:green;
+button:hover {
+  color: green;
   background-color: green;
 }
 
-.PillarImage{
+.PillarImage {
   width: 100%;
   height: 100%;
 }
+
 /* button {
 anchor-name: --my-anchor;
 }
@@ -331,22 +337,27 @@ anchor-name: --my-anchor;
   height: 100dvh;
   transform-style: preserve-3d;
   perspective: 800px;
- 
+
   ul {
     position: absolute;
     display: grid;
     inset: 0;
     background-color: #ff03;
     transform-style: preserve-3d;
- 
+
     li {
       grid-area: 1/1;
       border: 5px solid black;
     }
- 
- .vloer, .linkermuur, .rechtermuur, .achtermuur, .plafond {
- background-image:url(../assets/achtergrondmuur.jpg);
- }
+
+    .vloer,
+    .linkermuur,
+    .rechtermuur,
+    .achtermuur,
+    .plafond {
+      background-image: url(../assets/achtergrondmuur.jpg);
+    }
+
     .vloer {
       width: 100dvw;
       height: 50vmin;
@@ -354,7 +365,7 @@ anchor-name: --my-anchor;
       transform-origin: bottom;
       rotate: x 90deg;
     }
- 
+
     .linkermuur {
       width: 50vmin;
       height: 100dvh;
@@ -362,7 +373,7 @@ anchor-name: --my-anchor;
       transform-origin: left;
       rotate: y 90deg;
     }
- 
+
     .rechtermuur {
       width: 50vmin;
       height: 100dvh;
@@ -370,14 +381,14 @@ anchor-name: --my-anchor;
       transform-origin: right;
       rotate: y -90deg;
     }
- 
+
     .achtermuur {
       width: 100dvw;
       height: 100dvh;
       translate: 0 0 -50vmin;
- 
+
     }
- 
+
     .plafond {
       background-color: aqua;
       width: 100dvw;
@@ -392,43 +403,45 @@ anchor-name: --my-anchor;
 .InformationPopOver {
   position-area: center;
   position-anchor: --my-anchor;
-  background-color:#E5CD98;
+  background-color: #E5CD98;
   margin: 0;
-  width:60vw;
+  width: 60vw;
   border: none;
   border-radius: 1rem;
- 
+
   &:popover-open {
-      @starting-style {
-        &:popover-open{
+    @starting-style {
+      &:popover-open {
         transform: scale(1);
         opacity: 0;
-        
-        }
-      }
 
-  transform: scale(1.1);
-  opacity: 1;
-}
+      }
+    }
+
+    transform: scale(1.1);
+    opacity: 1;
+  }
 
   transform: scale(1);
   opacity: 0;
-  transition: transform 0.5s, opacity 0.5s, display 0.5s;
+  transition: transform 0.5s,
+  opacity 0.5s,
+  display 0.5s;
   transition-behavior: allow-discrete;
 }
 
-#popover-container{
+#popover-container {
   position: fixed;
   left: 50%;
   top: 50%;
   background-color: red;
   anchor-name: --my-anchor;
- 
+
 }
 
-.InformationPopOver img{
-width:100%;
-aspect-ratio:1;
+.InformationPopOver img {
+  width: 100%;
+  aspect-ratio: 1;
 }
 
 .popover-tags {
@@ -439,11 +452,11 @@ aspect-ratio:1;
 }
 
 .popover-tag-styling {
- display: inline;
- color: var(--background-color); 
- background-color: var(--text-color);
- padding: .3rem 1rem;
- border-radius: 500rem;
+  display: inline;
+  color: var(--background-color);
+  background-color: var(--text-color);
+  padding: .3rem 1rem;
+  border-radius: 500rem;
 }
 
 .InformationPopOver::backdrop {
@@ -456,7 +469,7 @@ aspect-ratio:1;
   gap: 1rem;
   flex-direction: column;
   color: var(--text-color);
-  
+
 }
 
 
@@ -471,7 +484,7 @@ aspect-ratio:1;
 
 
 .filler img {
-    width: 100%;
-    height:100%;
-     mix-blend-mode: luminosity;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: luminosity;
 }

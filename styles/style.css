@@ -36,6 +36,7 @@ body {
   }
 }
 section {
+position: fixed;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -96,7 +97,7 @@ main * {
   animation-range-end: 20dvh, 60dvh;
 }
 
-ul {
+main ul {
   justify-content: center;
   align-items: center;
   display: grid;
@@ -141,7 +142,7 @@ ul {
 
 }
 
-li {
+main li {
   grid-area: 1/1;
   width: var(--item-width);
   height: var(--item-height);
@@ -154,7 +155,7 @@ li {
     rotateY(var(--item-angle)) translateZ(calc(2 * var(--item-width)))
 }
 
-li button {
+main li button {
     mix-blend-mode: luminosity;
 }
 
@@ -349,4 +350,70 @@ anchor-name: --my-anchor;
 
 .InformationPopOver::backdrop {
   background: rgba(0, 0, 0, 0.9);
+}
+
+
+.scene {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  transform-style: preserve-3d;
+  perspective: 800px;
+ 
+  ul {
+    position: absolute;
+    display: grid;
+    inset: 0;
+    background-color: #ff03;
+    transform-style: preserve-3d;
+ 
+    li {
+      grid-area: 1/1;
+      border: 5px solid black;
+    }
+ 
+    .vloer {
+      background-color: aqua;
+      width: 100dvw;
+      height: 50vmin;
+      align-self: end;
+      transform-origin: bottom;
+      rotate: x 90deg;
+    }
+ 
+    .linkermuur {
+      background-color: aqua;
+      width: 50vmin;
+      height: 100dvh;
+      justify-self: start;
+      transform-origin: left;
+      rotate: y 90deg;
+    }
+ 
+    .rechtermuur {
+      background-color: aqua;
+      width: 50vmin;
+      height: 100dvh;
+      justify-self: end;
+      transform-origin: right;
+      rotate: y -90deg;
+    }
+ 
+    .achtermuur {
+      background-color: aqua;
+      width: 100dvw;
+      height: 100dvh;
+      translate: 0 0 -50vmin;
+ 
+    }
+ 
+    .plafond {
+      background-color: aqua;
+      width: 100dvw;
+      height: 50vmin;
+      align-self: start;
+      transform-origin: top;
+      rotate: x -90deg;
+    }
+  }
 }

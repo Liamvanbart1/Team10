@@ -461,7 +461,7 @@ anchor-name: --my-anchor;
 }
 
 .InformationPopOver::backdrop {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(43, 29, 0, 0.737);
 }
 
 .popover-text {

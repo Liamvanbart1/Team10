@@ -66,3 +66,15 @@ const fetchDate = async () => {
 }
 
 fetchDate();
+
+
+
+
+
+let audio = document.getElementById("scrollSound");
+
+window.addEventListener("scroll", () => {
+  if (audio.paused) {
+    audio.play();
+  }
+});

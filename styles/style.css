@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'DalekPinpoint';
+  src: url('../assets/DalekPinpointBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,10 +19,15 @@ html {
   --z-index2: 4;
   --z-index3: 2;
   --z-index4: 1;
+  
+  --pillar-color: #52421E; 
+  --text-color: #C4AB73;
+  --background-color: #E5CD98;
 }
 
 body {
   height: 200dvh;
+  background-color: var(--background-color);
   overflow-x: clip;
   timeline-scope: --horizontal-scroll;
 
@@ -23,7 +35,38 @@ body {
     display: none;
   }
 }
+section {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-top: 10rem;
+}
 
+h1, h2 {
+  font-family: 'DalekPinpoint', sans-serif;
+  background-color: var(--text-color);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+h1 {
+    font-size: clamp(3rem, 0.297rem + 11.0891vw, 10rem);
+    text-shadow: 3px 5px 1px rgba(255, 238, 142, 0.25);
+    -webkit-text-stroke-width:2px;
+    -webkit-text-stroke-color:#C4AB73;
+
+  }
+  h2 {
+    font-size: 2rem;
+    text-shadow: 1px 2px 1px rgba(255, 238, 142, 0.25);
+    -webkit-text-stroke-width:1px;
+    -webkit-text-stroke-color:#C4AB73;
+  }
+
+h1::after{
+  color:red;
+}
 main {
   position: fixed;
   top: 0;
@@ -102,10 +145,9 @@ li {
   grid-area: 1/1;
   width: var(--item-width);
   height: var(--item-height);
-  /* background-color: hsl(var(--bgColor), 100%, 50%); */
-  background: linear-gradient(90deg, rgba(232,164,0,1) 0%, rgba(246,174,1,1) 2%, rgba(246,174,1,1) 98%, rgba(232,164,0,1) 100%);  /* border: 5px solid black; */
+  background-color: var(--pillar-color);
   transform-style: preserve-3d;
-
+  /* background: url('../assets/test_cassie.png'); */
   --item-angle: calc(360deg / sibling-count() * sibling-index());
 
   transform:
@@ -277,11 +319,15 @@ anchor-name: --my-anchor;
 }
 */
 .InformationPopOver {
+  /* display: flex; */
   /* position-anchor: --my-anchor;  */
-  position-area: center span-bottom;
+  position-area: top span-bottom;
+  background-color:#E5CD98;
   margin: 0;
+  width:60vw;
+  height: 40vh;
   border: none;
-
+/* 
   &:popover-open {
       @starting-style {
         &:popover-open{
@@ -298,9 +344,9 @@ anchor-name: --my-anchor;
   transform: scale(1);
   opacity: 0;
   transition: transform 0.5s, opacity 0.5s, display 0.5s;
-  transition-behavior: allow-discrete;
+  transition-behavior: allow-discrete; */
 }
 
 .InformationPopOver::backdrop {
-  background: rgba(113, 113, 113, 0.5);
+  background: rgba(0, 0, 0, 0.9);
 }

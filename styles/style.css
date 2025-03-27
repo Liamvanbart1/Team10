@@ -311,7 +311,7 @@ button:hover{
   background-color: green;
 }
 
-img{
+.PillarImage{
   width: 100%;
   height: 100%;
 }
@@ -320,15 +320,15 @@ anchor-name: --my-anchor;
 }
 */
 .InformationPopOver {
-  /* display: flex; */
-  /* position-anchor: --my-anchor;  */
-  position-area: top span-bottom;
+  
+  position-area: center;
+  position-anchor: --my-anchor;
   background-color:#E5CD98;
   margin: 0;
   width:60vw;
   height: 40vh;
   border: none;
-/* 
+ 
   &:popover-open {
       @starting-style {
         &:popover-open{
@@ -345,7 +345,7 @@ anchor-name: --my-anchor;
   transform: scale(1);
   opacity: 0;
   transition: transform 0.5s, opacity 0.5s, display 0.5s;
-  transition-behavior: allow-discrete; */
+  transition-behavior: allow-discrete;
 }
 
 .InformationPopOver::backdrop {
@@ -372,8 +372,10 @@ anchor-name: --my-anchor;
       border: 5px solid black;
     }
  
+ .vloer, .linkermuur, .rechtermuur, .achtermuur, .plafond {
+ background-image:url(../assets/achtergrondmuur.jpg);
+ }
     .vloer {
-      background-color: aqua;
       width: 100dvw;
       height: 50vmin;
       align-self: end;
@@ -382,7 +384,6 @@ anchor-name: --my-anchor;
     }
  
     .linkermuur {
-      background-color: aqua;
       width: 50vmin;
       height: 100dvh;
       justify-self: start;
@@ -391,7 +392,6 @@ anchor-name: --my-anchor;
     }
  
     .rechtermuur {
-      background-color: aqua;
       width: 50vmin;
       height: 100dvh;
       justify-self: end;
@@ -400,7 +400,6 @@ anchor-name: --my-anchor;
     }
  
     .achtermuur {
-      background-color: aqua;
       width: 100dvw;
       height: 100dvh;
       translate: 0 0 -50vmin;
@@ -416,4 +415,18 @@ anchor-name: --my-anchor;
       rotate: x -90deg;
     }
   }
+}
+
+#popover-container{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  background-color: red;
+  anchor-name: --my-anchor;
+ 
+}
+
+.InformationPopOver img{
+width:100%;
+aspect-ratio:1;
 }

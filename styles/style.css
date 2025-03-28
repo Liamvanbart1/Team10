@@ -347,7 +347,7 @@ anchor-name: --my-anchor;
 
     li {
       grid-area: 1/1;
-      border: 5px solid black;
+      border: 5px solid  var(--pillar-color );
     }
 
     .vloer,
